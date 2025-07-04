@@ -1,0 +1,27 @@
+{
+  "name": "cimp",
+  "version": "1.0.0",
+  "description": "for project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lavanya-Vaidya/CIMP.git"
+  },
+  "author": "Lavanya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lavanya-Vaidya/CIMP/issues"
+  },
+  "homepage": "https://github.com/Lavanya-Vaidya/CIMP#readme",
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.16.1"
+  }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+  <title><%= club.name %> | Club Details</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="container my-5 bg-dark text-light">
+  <%- include("./partials/header") %>
+  <div class="card bg-dark text-light shadow-lg mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+      <h2 class="card-title"><%= club.name %></h2>
+      <h5 class="card-subtitle mb-2 text-secondary"><%= club.category %></h5>
+      <p class="card-text mt-3"><%= club.description %></p>
+      <p><strong>Faculty Coordinator:</strong> <%= club.facultyCoordinator %></p>
+      <hr>
+      <h5>President: <%= club.president ? club.president : "Not selected" %></h5>
+      <h6>Members:</h6>
+      <ul>
+        <% club.members.forEach(member => { %>
+          <li><%= member %></li>
+        <% }) %>
+      </ul>
+      <!-- Add Member Form -->
+      <form action="/clubs/<%= club.id %>/add-member" method="POST" class="mb-3">
+        <div class="input-group">
+          <input type="text" name="memberName" class="form-control" placeholder="Add member" required>
+          <button class="btn btn-success" type="submit">Add</button>
+        </div>
+      </form>
+      <!-- Set President Form -->
+      <form action="/clubs/<%= club.id %>/set-president" method="POST">
+        <div class="input-group">
+          <select name="president" class="form-select" required>
+            <option value="">Select president</option>
+            <% club.members.forEach(member => { %>
+              <option value="<%= member %>" <%= club.president === member ? "selected" : "" %>><%= member %></option>
+            <% }) %>
+          </select>
+          <button class="btn btn-primary" type="submit">Set President</button>
+        </div>
+      </form>
+      <a href="/clubs" class="btn btn-outline-light mt-3">Back to Clubs</a>
+    </div>
+  </div>
+</body>
+</html>
